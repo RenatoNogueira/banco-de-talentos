@@ -9,6 +9,20 @@ import { NavbarComponent } from '../layout/navbar/navbar.component';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
+  usuarioSelecionado: any = {
+    nome: 'Selecione um usuário',
+    avatar: 'https://img.myloview.com.br/posters/silhueta-de-perfil-de-cabeca-de-avatar-com-imagens-masculinas-de-centro-de-chamada-de-sombra-700-130872660.jpg',
+    dadosPessoais: { genero: '-', idade: '-' },
+    formacao: [],
+    experiencia: [],
+    habilidades: [],
+    comportamentais: [],
+    disc: '',
+    curriculumUrl: '#',
+  };
+
+
   dados = {
     foto: 'assets/foto-perfil.jpg',
     nome: 'Maria Clara de Souza',

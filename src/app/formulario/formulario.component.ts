@@ -21,6 +21,20 @@ export class FormularioComponent {
 
 activeTab = 'dados';
 
+
+usuarioSelecionado: any = {
+  nome: 'Selecione um usuário',
+  avatar: 'https://img.myloview.com.br/posters/silhueta-de-perfil-de-cabeca-de-avatar-com-imagens-masculinas-de-centro-de-chamada-de-sombra-700-130872660.jpg',
+  dadosPessoais: { genero: '-', idade: '-' },
+  formacao: [],
+  experiencia: [],
+  habilidades: [],
+  comportamentais: [],
+  disc: '',
+  curriculumUrl: '#',
+};
+
+
 handleEditClick(): void {
   // Lógica para abrir o formulário de edição
   console.log('Botão editar clicado');

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { debounceTime } from 'rxjs/operators';
 
 import { NavbarComponent } from '../../layout/navbar/navbar.component';
@@ -8,13 +9,14 @@ import { NavbarComponent } from '../../layout/navbar/navbar.component';
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, NavbarComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, NavbarComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
 export class AdminComponent implements OnInit {
   buscaControl = new FormControl('');
   sugestoes: any[] = [];
+  usuarios: any[] = [];
 
   usuarioSelecionado: any = {
     nome: 'Selecione um usuário',
@@ -28,123 +30,37 @@ export class AdminComponent implements OnInit {
     curriculumUrl: '#',
   };
 
-  usuarios = [
-  {
-    nome: 'Maria Clara de Souza',
-    cpf: '123.456.789-00',
-    avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
-    dadosPessoais: { genero: 'Feminino', idade: 30 },
-    formacao: ['Graduação em Educação Física'],
-    experiencia: ['Instrutora em academia XYZ'],
-    habilidades: ['Treinamento funcional', 'Musculação'],
-    comportamentais: ['Liderança', 'Trabalho em equipe'],
-    disc: 'I',
-    curriculumUrl: 'https://exemplo.com/curriculo-maria.pdf'
-  },
-  {
-    nome: 'João Pedro Lima',
-    cpf: '987.654.321-00',
-    avatar: 'https://randomuser.me/api/portraits/men/42.jpg',
-    dadosPessoais: { genero: 'Masculino', idade: 28 },
-    formacao: ['Bacharel em Esportes'],
-    experiencia: ['Personal Trainer Autônomo'],
-    habilidades: ['Alongamento', 'Condicionamento físico'],
-    comportamentais: ['Disciplina', 'Foco em resultados'],
-    disc: 'D',
-    curriculumUrl: 'https://exemplo.com/curriculo-joao.pdf'
-  },
-  {
-    nome: 'Renata Oliveira Santos',
-    cpf: '321.654.987-10',
-    avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
-    dadosPessoais: { genero: 'Feminino', idade: 34 },
-    formacao: ['Graduação em Enfermagem'],
-    experiencia: ['Hospital Santa Luzia', 'Clínica Bem Estar'],
-    habilidades: ['Cuidados intensivos', 'Administração de medicamentos'],
-    comportamentais: ['Empatia', 'Atenção aos detalhes'],
-    disc: 'S',
-    curriculumUrl: 'https://exemplo.com/curriculo-renata.pdf'
-  },
-  {
-    nome: 'Eduardo Martins Lima',
-    cpf: '456.123.789-22',
-    avatar: 'https://randomuser.me/api/portraits/men/45.jpg',
-    dadosPessoais: { genero: 'Masculino', idade: 40 },
-    formacao: ['Administração de Empresas', 'MBA em Gestão Financeira'],
-    experiencia: ['Gerente de Projetos na FinanCorp', 'Analista na ContábilPro'],
-    habilidades: ['Gestão de equipes', 'Planejamento estratégico'],
-    comportamentais: ['Liderança', 'Resiliência'],
-    disc: 'C',
-    curriculumUrl: 'https://exemplo.com/curriculo-eduardo.pdf'
-  },
-  {
-    nome: 'Bruna Lima Ferreira',
-    cpf: '159.753.258-63',
-    avatar: 'https://randomuser.me/api/portraits/women/65.jpg',
-    dadosPessoais: { genero: 'Feminino', idade: 29 },
-    formacao: ['Ciência da Computação'],
-    experiencia: ['Desenvolvedora Full Stack na CodeMax', 'Freelancer em projetos web'],
-    habilidades: ['Angular', 'Node.js', 'MySQL'],
-    comportamentais: ['Lógica', 'Autonomia'],
-    disc: 'D',
-    curriculumUrl: 'https://exemplo.com/curriculo-bruna.pdf'
-  },
-  {
-    nome: 'Felipe Andrade Torres',
-    cpf: '741.852.963-00',
-    avatar: 'https://randomuser.me/api/portraits/men/64.jpg',
-    dadosPessoais: { genero: 'Masculino', idade: 36 },
-    formacao: ['Engenharia Civil'],
-    experiencia: ['Engenheiro de Obras na Construtora Alpha', 'Projetista estrutural'],
-    habilidades: ['AutoCAD', 'Cálculo estrutural'],
-    comportamentais: ['Precisão', 'Trabalho sob pressão'],
-    disc: 'C',
-    curriculumUrl: 'https://exemplo.com/curriculo-felipe.pdf'
-  },
-  {
-    nome: 'Camila Souza Braga',
-    cpf: '852.369.147-77',
-    avatar: 'https://randomuser.me/api/portraits/women/55.jpg',
-    dadosPessoais: { genero: 'Feminino', idade: 31 },
-    formacao: ['Engenharia de Software'],
-    experiencia: ['Scrum Master na DevSolutions', 'QA Analyst na SoftPlus'],
-    habilidades: ['Gestão ágil', 'Testes automatizados', 'DevOps'],
-    comportamentais: ['Organização', 'Comunicação'],
-    disc: 'S',
-    curriculumUrl: 'https://exemplo.com/curriculo-camila.pdf'
-  },
-  {
-    nome: 'Leandro Batista Costa',
-    cpf: '963.258.741-88',
-    avatar: 'https://randomuser.me/api/portraits/men/38.jpg',
-    dadosPessoais: { genero: 'Masculino', idade: 33 },
-    formacao: ['Nutrição'],
-    experiencia: ['Nutricionista em clínica esportiva', 'Consultoria alimentar'],
-    habilidades: ['Avaliação nutricional', 'Dietas personalizadas'],
-    comportamentais: ['Empatia', 'Foco no cliente'],
-    disc: 'I',
-    curriculumUrl: 'https://exemplo.com/curriculo-leandro.pdf'
-  }
-];
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.buscaControl.valueChanges
-      .pipe(debounceTime(300))
-      .subscribe((valor) => {
-        const termo = (valor || '').toLowerCase();
+    this.http.get<any[]>('/assets/json/usuarios.json').subscribe(data => {
+      this.usuarios = data;
 
-        this.sugestoes = this.usuarios.filter(user => {
-          return (
-            user.nome.toLowerCase().includes(termo) ||
-            user.cpf.includes(termo) ||
-            user.disc.toLowerCase().includes(termo) ||
-            this.arrayContem(user.formacao, termo) ||
-            this.arrayContem(user.experiencia, termo) ||
-            this.arrayContem(user.habilidades, termo) ||
-            this.arrayContem(user.comportamentais, termo)
-          );
-        });
-      });
+      this.buscaControl.valueChanges
+  .pipe(debounceTime(300))
+  .subscribe((valor) => {
+    const termo = (valor || '').toLowerCase().trim();
+
+    if (!termo) {
+      this.sugestoes = []; // ou this.usuarios para exibir todos ao apagar
+      return;
+    }
+
+    this.sugestoes = this.usuarios.filter(user => {
+      return (
+        user.nome?.toLowerCase().includes(termo) ||
+        user.cpf?.includes(termo) ||
+        user.disc?.toLowerCase().includes(termo) ||
+        this.arrayContem(user.formacao || [], termo) ||
+        this.arrayContem(user.experiencia || [], termo) ||
+        this.arrayContem(user.habilidades || [], termo) ||
+        this.arrayContem(user.comportamentais || [], termo)
+      );
+    });
+  });
+
+
+    });
   }
 
   arrayContem(arr: string[], termo: string): boolean {

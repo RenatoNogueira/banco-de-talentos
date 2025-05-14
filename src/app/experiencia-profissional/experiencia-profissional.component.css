@@ -1,0 +1,72 @@
+/* Estilos base */
+.form-section {
+  background-color: #ffffff;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Efeito hover nos cards de experiência */
+.form-section .border:hover {
+  border-color: #3a86ff !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para textarea */
+textarea.form-control {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Botões com ícones */
+.btn-outline-primary,
+.btn-outline-danger {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline-primary:hover {
+  background-color: #3a86ff;
+  color: white;
+}
+
+.btn-outline-danger:hover {
+  background-color: #ff006e;
+  color: white;
+}
+
+/* Efeito Ripple */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .col-md-1.text-end {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .col-md-6,
+  .col-md-3,
+  .col-md-5 {
+    margin-bottom: 1rem;
+  }
+
+  .btn-outline-danger {
+    margin-right: 0.5rem !important;
+  }
+}

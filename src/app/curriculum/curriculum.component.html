@@ -1,0 +1,14 @@
+<div class="container my-5">
+  <div class="form-section p-4">
+    <h4>Currículo (PDF ou DOC)</h4>
+    <div class="row g-3">
+      <div class="mb-3">
+        <input class="form-control" type="file" id="curriculo" name="curriculo" accept=".pdf,.doc,.docx" required
+          (change)="onCurriculoChange($event)" [class.is-invalid]="isArquivoInvalido">
+        <div class="invalid-feedback">
+          Por favor, envie um arquivo PDF ou DOC válido.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

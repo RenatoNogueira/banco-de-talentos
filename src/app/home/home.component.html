@@ -1,0 +1,50 @@
+<app-navbar [userName]="'Maria Clara de Souza'"
+  [userAvatar]="'https://static.vecteezy.com/ti/vetor-gratis/p1/2275847-avatar-masculino-perfil-icone-de-homem-caucasiano-sorridente-vetor.jpg'"
+  [showEditButton]="true">
+</app-navbar>
+
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3 text-center">
+      <img [src]="dados.foto" alt="Foto" class="img-thumbnail mb-3" style="width: 100%;">
+    </div>
+
+    <div class="col-md-9">
+      <div class="mb-2"><strong>Nome:</strong> {{ dados.nome }}</div>
+
+      <div class="row">
+        <div class="col-md-4 mb-2"><strong>Idade:</strong> {{ dados.idade }}</div>
+        <div class="col-md-4 mb-2"><strong>CPF:</strong> {{ dados.cpf }}</div>
+        <div class="col-md-4 mb-2"><strong>RG:</strong> {{ dados.rg }}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-2"><strong>Telefone:</strong> {{ dados.telefone }}</div>
+        <div class="col-md-6 mb-2"><strong>Email:</strong> {{ dados.email }}</div>
+      </div>
+
+      <div class="mb-2"><strong>Escolaridade Geral:</strong> {{ dados.escolaridade }}</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <h5>Formações</h5>
+  <div class="row mb-3" *ngFor="let formacao of dados.formacoes">
+    <div class="col-md-3"><strong>Escolaridade:</strong> {{ formacao.escolaridade }}</div>
+    <div class="col-md-3"><strong>Curso:</strong> {{ formacao.curso }}</div>
+    <div class="col-md-3"><strong>Instituição:</strong> {{ formacao.instituicao }}</div>
+    <div class="col-md-3"><strong>Ano:</strong> {{ formacao.ano }}</div>
+  </div>
+
+  <hr>
+
+  <h5>Experiências</h5>
+  <div class="row mb-3" *ngFor="let experiencia of dados.experiencias">
+    <div class="col-md-3"><strong>Empresa:</strong> {{ experiencia.empresa }}</div>
+    <div class="col-md-3"><strong>Cargo:</strong> {{ experiencia.cargo }}</div>
+    <div class="col-md-3"><strong>Data Início:</strong> {{ experiencia.dataInicio }}</div>
+    <div class="col-md-3"><strong>Data Término:</strong> {{ experiencia.dataTermino }}</div>
+  </div>
+</div>

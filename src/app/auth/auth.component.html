@@ -1,0 +1,61 @@
+<div class="container-fluid min-vh-100 ps-md-0">
+  <div class="row g-0 min-vh-100">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6 d-flex align-items-center">
+      <div class="login w-100 py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto animated-fadeInUp">
+
+              <h3 class="login-heading mb-4">Bem-vindo ao Banco de Talentos!</h3>
+
+              <!-- Formulário de Login -->
+              <form (ngSubmit)="login()">
+                <div class="form-floating mb-3 animated-fadeInUp animated-delay-1">
+                  <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" [(ngModel)]="cpf"
+                    name="cpf" (input)="onCpfInput($event)" [ngClass]="{'is-invalid': cpfError}" maxlength="14">
+                  <label for="cpf">CPF</label>
+                  <div class="invalid-feedback">
+                    {{ cpfError }}
+                  </div>
+                </div>
+
+                <div class="form-floating mb-3 position-relative animated-fadeInUp animated-delay-2">
+                  <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"
+                    placeholder="Senha" [(ngModel)]="password" name="password"
+                    [ngClass]="{'is-invalid': passwordError}">
+                  <label for="password">Senha</label>
+                  <div class="invalid-feedback">
+                    {{ passwordError }}
+                  </div>
+                  <button type="button" class="btn btn-sm btn-outline-secondary show-password-btn"
+                    (click)="showPassword = !showPassword"
+                    [attr.aria-label]="showPassword ? 'Esconder senha' : 'Mostrar senha'">
+                    <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                  </button>
+                </div>
+
+                <div class="form-check mb-3 animated-fadeInUp animated-delay-3">
+                  <input class="form-check-input" type="checkbox" id="remember" [(ngModel)]="remember" name="remember">
+                  <label class="form-check-label" for="remember">
+                    Lembrar senha
+                  </label>
+                </div>
+
+                <div class="d-grid">
+                  <button
+                    class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2 animated-fadeInUp animated-delay-4"
+                    type="submit">Entrar</button>
+                  <div class="text-center animated-fadeInUp animated-delay-5">
+                    <a class="small" href="#">Esqueceu a senha?</a>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

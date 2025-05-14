@@ -1,0 +1,74 @@
+<div class="container my-5">
+  <div class="form-section p-4 mb-5">
+    <h4>Habilidades</h4>
+    <form [formGroup]="habilidadesForm" (ngSubmit)="onSubmit()">
+      <div class="row g-3">
+        <div class="table-responsive mt-4">
+          <table class="table table-bordered align-middle">
+            <thead class="table-primary text-center">
+              <tr>
+                <th>Habilidade</th>
+                <th>Possui? (Sim/Não)</th>
+                <th>Nível de Domínio (1-5)</th>
+                <th>Comentários</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let hab of habilidades">
+                <td>
+                  {{hab.label}}
+                  <small *ngIf="hab.subtitulo">{{hab.subtitulo}}</small>
+                </td>
+
+                <td class="text-center">
+                  <div class="form-check form-check-inline">
+                    <input type="radio" [id]="hab.nome + '_sim'" [name]="hab.nome + '_possui'" value="sim"
+                      class="form-check-input" formControlName="{{hab.nome}}_possui"
+                      (change)="onPossuiChange(hab.nome, 'sim')">
+                    <label [for]="hab.nome + '_sim'" class="form-check-label">Sim</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input type="radio" [id]="hab.nome + '_nao'" [name]="hab.nome + '_possui'" value="nao"
+                      class="form-check-input" formControlName="{{hab.nome}}_possui"
+                      (change)="onPossuiChange(hab.nome, 'nao')">
+                    <label [for]="hab.nome + '_nao'" class="form-check-label">Não</label>
+                  </div>
+                </td>
+
+                <td class="text-center">
+                  <div class="d-flex justify-content-center gap-1">
+                    <input type="radio" [id]="hab.nome + '_nivel1'" [name]="hab.nome + '_nivel'" value="1"
+                      formControlName="{{hab.nome}}_nivel">
+                    <label [for]="hab.nome + '_nivel1'">1</label>
+
+                    <input type="radio" [id]="hab.nome + '_nivel2'" [name]="hab.nome + '_nivel'" value="2"
+                      formControlName="{{hab.nome}}_nivel">
+                    <label [for]="hab.nome + '_nivel2'">2</label>
+
+                    <input type="radio" [id]="hab.nome + '_nivel3'" [name]="hab.nome + '_nivel'" value="3"
+                      formControlName="{{hab.nome}}_nivel">
+                    <label [for]="hab.nome + '_nivel3'">3</label>
+
+                    <input type="radio" [id]="hab.nome + '_nivel4'" [name]="hab.nome + '_nivel'" value="4"
+                      formControlName="{{hab.nome}}_nivel">
+                    <label [for]="hab.nome + '_nivel4'">4</label>
+
+                    <input type="radio" [id]="hab.nome + '_nivel5'" [name]="hab.nome + '_nivel'" value="5"
+                      formControlName="{{hab.nome}}_nivel">
+                    <label [for]="hab.nome + '_nivel5'">5</label>
+                  </div>
+                </td>
+
+                <td>
+                  <input type="text" class="form-control" formControlName="{{hab.nome}}_comentario"
+                    placeholder="Comentários">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

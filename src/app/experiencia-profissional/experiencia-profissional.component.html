@@ -1,0 +1,46 @@
+<div class="container my-5">
+  <div class="form-section p-4 mb-5">
+    <h4 class="mb-4">Experiência Profissional</h4>
+    <div id="experiencias-container">
+      <div class="form-section border rounded p-3 mb-3"
+        *ngFor="let experiencia of experiencias; let i = index; trackBy: trackByFn">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-6">
+            <label class="form-label">Empresa</label>
+            <input type="text" class="form-control" [(ngModel)]="experiencia.empresa" [name]="'empresa-' + i">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Cargo</label>
+            <input type="text" class="form-control" [(ngModel)]="experiencia.cargo" [name]="'cargo-' + i">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Data de Início</label>
+            <input type="month" class="form-control" [(ngModel)]="experiencia.inicio" [name]="'inicio-' + i">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Data de Término</label>
+            <input type="month" class="form-control" [(ngModel)]="experiencia.fim" [name]="'fim-' + i">
+          </div>
+          <div class="col-md-5">
+            <label class="form-label">Principais Atividades</label>
+            <textarea class="form-control" [(ngModel)]="experiencia.atividades" [name]="'atividades-' + i"
+              rows="2"></textarea>
+          </div>
+          <div class="col-md-1 text-end">
+            <button type="button" class="btn btn-outline-danger me-2"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+              data-bs-toggle="tooltip" title="Remover" (click)="removerExperiencia(i); addRippleEffect($event)"
+              [disabled]="experiencias.length === 1">
+              <i class="bi bi-trash"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+              data-bs-toggle="tooltip" title="Adicionar" (click)="adicionarExperiencia(); addRippleEffect($event)">
+              <i class="bi bi-plus-lg"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

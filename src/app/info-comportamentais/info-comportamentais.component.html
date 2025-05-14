@@ -1,0 +1,116 @@
+<div class="container my-5">
+  <div class="form-section p-4 mb-5">
+    <h4><strong>Informações Comportamentais</strong></h4>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label">
+          <i class="bi bi-chat-dots-fill text-primary" data-bs-toggle="popover" data-bs-html="true"
+            data-bs-placement="top" data-bs-title="Comunicação Interpessoal"
+            data-bs-content="<strong>Capacidade</strong> de se comunicar bem com outras pessoas em diversas situações. Isso inclui clareza, escuta ativa e empatia.">
+          </i>
+          Você tem habilidades de comunicação interpessoal?
+        </label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" (change)="toggleFieldFromComponent('explicaComunicacao', true)"
+            name="comunicacao" id="comunicacaoSim" value="sim">
+          <label class="form-check-label" for="comunicacao">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" (change)="toggleFieldFromComponent('explicaComunicacao', false)"
+            name="comunicacao" id="comunicacaoNao" value="nao">
+          <label class="form-check-label" for="comunicacao">Não</label>
+        </div>
+        <textarea class="form-control mt-2" id="explicaComunicacao" rows="2"
+          placeholder="Em que situações você aplicou essa habilidade?"></textarea>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">
+          <i class="bi bi-lightbulb-fill text-warning" data-bs-toggle="popover" data-bs-html="true"
+            data-bs-placement="top" data-bs-title="Resolução de Problemas"
+            data-bs-content="<strong>Capacidade</strong>  de identificar e resolver problemas de forma eficaz."></i>
+          Você possui habilidades de resolução de problemas?
+        </label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" (change)="toggleFieldFromComponent('explicaResolucao', true)"
+            name="resolucao" id="resolucaoSim" value="sim">
+          <label class="form-check-label" for="resolucao">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" (change)="toggleFieldFromComponent('explicaResolucao', false)"
+            name="resolucao" id="resolucaoNao" value="nao">
+          <label class="form-check-label" for="resolucao">Não</label>
+        </div>
+        <textarea class="form-control mt-2" id="explicaResolucao" rows="2"
+          placeholder="Exemplos práticos de quando utilizou essa habilidade"></textarea>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label">
+          <i class="bi bi-people-fill text-success" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="top"
+            data-bs-title="Liderança ou Trabalho em Equipe"
+            data-bs-content="<strong>Capacidade</strong>   de liderar ou trabalhar em grupo."></i>
+          Você tem habilidades de liderança ou trabalho em equipe?
+        </label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" (change)="toggleFieldFromComponent('explicaLideranca', true)"
+            name="lideranca" id="lideranca" value="sim">
+          <label class="form-check-label" for="lideranca">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" (change)="toggleFieldFromComponent('explicaLideranca', false)"
+            name="lideranca" id="lideranca" value="nao">
+          <label class="form-check-label" for="lideranca">Não</label>
+        </div>
+        <textarea class="form-control mt-2" id="explicaLideranca" rows="2"
+          placeholder="Exemplos de atuação como líder ou em equipe"></textarea>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">
+          <i class="bi bi-emoji-frown-fill text-danger" data-bs-toggle="popover" data-bs-html="true"
+            data-bs-placement="top" data-bs-title="Pressão/Estresse"
+            data-bs-content="<strong>Capacidade</strong> de se manter funcional sob pressão."></i>
+          Você lida bem com situações de pressão ou estresse?
+        </label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" (change)="toggleFieldFromComponent('explicaEstresse', true)"
+            name="estresse" id="estresse" value="sim">
+          <label class="form-check-label" for="estresse">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" (change)="toggleFieldFromComponent('explicaEstresse', false)"
+            name="estresse" id="estresseNao" value="nao">
+          <label class="form-check-label" for="estresse">Não</label>
+        </div>
+        <textarea class="form-control mt-2" id="explicaEstresse" rows="2"
+          placeholder="Como você gerencia o estresse?"></textarea>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label">
+          <i class="bi bi-arrow-repeat text-info" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="top"
+            data-bs-title="Adaptabilidade"
+            data-bs-content="<strong>Facilidade</strong> em se adaptar a mudanças ou novos contextos."></i>
+          Você é adaptável a mudanças e novos desafios?
+        </label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" (change)="toggleFieldFromComponent('explicaAdapta', true)"
+            name="adaptabilidade" id="adapta" value="sim">
+          <label class="form-check-label" for="adapta">Sim</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" (change)="toggleFieldFromComponent('explicaAdapta', false)"
+            name="adaptabilidade" id="adapta" value="nao">
+          <label class="form-check-label" for="adapta">Não</label>
+        </div>
+        <textarea class="form-control mt-2" id="explicaAdapta" rows="2"
+          placeholder="Explique como você se adapta a mudanças ou desafios"></textarea>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+<app-navbar [userName]="usuarioSelecionado.nome" [userAvatar]="usuarioSelecionado.avatar" [showEditButton]="true"
+  (editClicked)="handleEditClick()">
+</app-navbar>
+
+
+<div class="container">
+
+  <h1 class="mt-4">Busca por profissional</h1>
+
+  <div class="container">
+    <div class="input-group flex-nowrap mt-5">
+      <span class="input-group-text" id="addon-wrapping"><i class="bi bi-search"></i></span>
+      <input type="text" class="form-control" placeholder="Faça uma busca previa do que se busca"
+        [formControl]="buscaControl" />
+    </div>
+
+    <div *ngIf="sugestoes.length > 0" class="list-group w-100 mt-3">
+      <button type="button" class="list-group-item list-group-item-action" *ngFor="let sugestao of sugestoes"
+        (click)="selecionarUsuario(sugestao)">
+        <strong>{{ sugestao.nome }}</strong><br />
+        <small>CPF: {{ sugestao.cpf }}</small><br />
+        <small *ngIf="sugestao.formacao.length">Formação: {{ sugestao.formacao[0] }}</small>
+      </button>
+    </div>
+
+    <div class="mt-5 mb-5">
+      <ul class="nav nav-tabs" id="userTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="dados-tab" data-bs-toggle="tab" data-bs-target="#dados" type="button"
+            role="tab">
+            Dados Pessoais
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="formacao-tab" data-bs-toggle="tab" data-bs-target="#formacao" type="button"
+            role="tab">
+            Formação Acadêmica
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="experiencia-tab" data-bs-toggle="tab" data-bs-target="#experiencia" type="button"
+            role="tab">
+            Experiência Profissional
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="habilidades-tab" data-bs-toggle="tab" data-bs-target="#habilidades" type="button"
+            role="tab">
+            Habilidades
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="comportamentais-tab" data-bs-toggle="tab" data-bs-target="#comportamentais"
+            type="button" role="tab">
+            Info. Comportamentais
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="disc-tab" data-bs-toggle="tab" data-bs-target="#disc" type="button" role="tab">
+            DISC
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="curriculum-tab" data-bs-toggle="tab" data-bs-target="#curriculum" type="button"
+            role="tab">
+            Curriculum
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content p-3 border border-top-0 rounded-bottom">
+        <div class="tab-pane fade show active" id="dados" role="tabpanel">
+          <p><strong>Gênero:</strong> {{ usuarioSelecionado.dadosPessoais.genero }}</p>
+          <p><strong>Idade:</strong> {{ usuarioSelecionado.dadosPessoais.idade }}</p>
+        </div>
+        <div class="tab-pane fade" id="formacao" role="tabpanel">
+          <ul>
+            <li *ngFor="let curso of usuarioSelecionado.formacao">{{ curso }}</li>
+          </ul>
+        </div>
+        <div class="tab-pane fade" id="experiencia" role="tabpanel">
+          <ul>
+            <li *ngFor="let exp of usuarioSelecionado.experiencia">{{ exp }}</li>
+          </ul>
+        </div>
+        <div class="tab-pane fade" id="habilidades" role="tabpanel">
+          <ul>
+            <li *ngFor="let hab of usuarioSelecionado.habilidades">{{ hab }}</li>
+          </ul>
+        </div>
+        <div class="tab-pane fade" id="comportamentais" role="tabpanel">
+          <ul>
+            <li *ngFor="let comp of usuarioSelecionado.comportamentais">{{ comp }}</li>
+          </ul>
+        </div>
+        <div class="tab-pane fade" id="disc" role="tabpanel">
+          <p><strong>Perfil DISC:</strong> {{ usuarioSelecionado.disc }}</p>
+        </div>
+        <div class="tab-pane fade" id="curriculum" role="tabpanel">
+          <a class="btn btn-outline-primary" [href]="usuarioSelecionado.curriculumUrl" target="_blank">
+            Ver Currículo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

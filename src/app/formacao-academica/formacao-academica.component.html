@@ -1,0 +1,45 @@
+<div class="container my-5">
+  <div class="form-section p-4 mb-5">
+    <h4 class="mb-4">Formação Acadêmica</h4>
+    <div id="formacoes-container">
+      <div class="form-section border rounded p-3 mb-3"
+        *ngFor="let formacao of formacoes; let i = index; trackBy: trackByFn">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-2">
+            <label class="form-label">Nível de Escolaridade</label>
+            <select class="form-select" [(ngModel)]="formacao.escolaridade" [name]="'escolaridade-' + i">
+              <option selected disabled value="">Selecione</option>
+              <option *ngFor="let nivel of niveisEscolaridade" [value]="nivel">{{ nivel }}</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Curso</label>
+            <input type="text" class="form-control" [(ngModel)]="formacao.curso" [name]="'curso-' + i">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Instituição</label>
+            <input type="text" class="form-control" [(ngModel)]="formacao.instituicao" [name]="'instituicao-' + i">
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">Ano de Conclusão</label>
+            <input type="number" class="form-control" [(ngModel)]="formacao.anoConclusao" [name]="'ano_conclusao-' + i"
+              min="1900" max="2099">
+          </div>
+          <div class="col-md-1 text-end">
+            <button type="button" class="btn btn-outline-danger me-2"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+              data-bs-toggle="tooltip" title="Remover" (click)="removerFormacao(i); addRippleEffect($event)"
+              [disabled]="formacoes.length === 1">
+              <i class="bi bi-trash"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+              data-bs-toggle="tooltip" title="Adicionar" (click)="adicionarFormacao(); addRippleEffect($event)">
+              <i class="bi bi-plus-lg"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

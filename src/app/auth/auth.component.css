@@ -1,0 +1,146 @@
+ body {
+   font-family: 'Roboto', sans-serif;
+   background: #f8f9fc;
+ }
+
+ .show-password-btn {
+   position: absolute;
+   top: 50%;
+   right: 1rem;
+   transform: translateY(-50%);
+   padding: 0.25rem 0.5rem;
+   border: none;
+   background: transparent;
+   color: #6c757d;
+ }
+
+ .show-password-btn:hover {
+   color: #495057;
+ }
+
+ .bg-image {
+   background-image: url('https://colorlib.com/etc/lf/Login_v18/images/bg-01.jpg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+ }
+
+ .login {
+   height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+
+ .login-heading {
+   font-weight: 300;
+   margin-bottom: 1.5rem;
+   text-align: center;
+   color: #333;
+ }
+
+ .btn-login {
+   font-size: 0.9rem;
+   letter-spacing: 0.05rem;
+   padding: 0.75rem 1rem;
+   background-color: #4e73df;
+   border: none;
+ }
+
+ .btn-login:hover {
+   background-color: #2e59d9;
+ }
+
+ .form-floating>label {
+   color: #6c757d;
+ }
+
+ .form-control {
+   padding: 1rem 0.75rem;
+   border: 1px solid #d1d3e2;
+   border-radius: 0.35rem;
+ }
+
+ .form-control:focus {
+   border-color: #bac8f3;
+   box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+ }
+
+ .form-check-input {
+   margin-top: 0.2rem;
+ }
+
+ .form-check-input:checked {
+   background-color: var(--primary-color);
+   border-color: var(--primary-color);
+ }
+
+ .invalid-feedback {
+   display: none;
+   font-size: 0.875rem;
+   margin-top: 0.25rem;
+ }
+
+ .was-validated .form-control:invalid~.invalid-feedback,
+ .form-control.is-invalid~.invalid-feedback {
+   display: block;
+ }
+
+ /* Animação de entrada */
+ @keyframes fadeInUp {
+   0% {
+     opacity: 0;
+     transform: translateY(30px);
+   }
+
+   100% {
+     opacity: 1;
+     transform: translateY(0);
+   }
+ }
+
+ .animated-fadeInUp {
+   animation: fadeInUp 0.8s ease-out both;
+ }
+
+ .animated-delay-1 {
+   animation-delay: 0.3s;
+ }
+
+ .animated-delay-2 {
+   animation-delay: 0.5s;
+ }
+
+ .animated-delay-3 {
+   animation-delay: 0.7s;
+ }
+
+ .animated-delay-4 {
+   animation-delay: 0.9s;
+ }
+
+ /* Imagem de fundo com fade lateral */
+ @keyframes fadeInLeft {
+   0% {
+     opacity: 0;
+     transform: translateX(-40px);
+   }
+
+   100% {
+     opacity: 1;
+     transform: translateX(0);
+   }
+ }
+
+ .bg-image {
+   animation: fadeInLeft 1s ease-out both;
+ }
+
+
+
+ /* Responsividade */
+ @media (max-width: 767.98px) {
+   .login {
+     min-height: 100vh;
+   }
+ }

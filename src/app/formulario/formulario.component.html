@@ -1,0 +1,78 @@
+<app-navbar [userName]="'Maria Clara de Souza'"
+  [userAvatar]="'https://static.vecteezy.com/ti/vetor-gratis/p1/2275847-avatar-masculino-perfil-icone-de-homem-caucasiano-sorridente-vetor.jpg'"
+  [showEditButton]="true" (editClicked)="handleEditClick()">>
+</app-navbar>
+
+
+
+<div class="container my-5">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="dados-tab" data-bs-toggle="tab" data-bs-target="#dados" type="button"
+        role="tab" aria-controls="dados" aria-selected="true">
+        Dados Pessoais
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="formacao-tab" data-bs-toggle="tab" data-bs-target="#formacao" type="button"
+        role="tab" aria-controls="formacao" aria-selected="false">
+        Formação Acadêmica
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="experiencia-tab" data-bs-toggle="tab" data-bs-target="#experiencia" type="button"
+        role="tab" aria-controls="experiencia" aria-selected="false">
+        Experiência Profissional
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="habilidades-tab" data-bs-toggle="tab" data-bs-target="#habilidades" type="button"
+        role="tab" aria-controls="habilidades" aria-selected="false">
+        Habilidades
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="comportamentais-tab" data-bs-toggle="tab" data-bs-target="#comportamentais"
+        type="button" role="tab" aria-controls="comportamentais" aria-selected="false">
+        Info. Comportamentais
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="disc-tab" data-bs-toggle="tab" data-bs-target="#disc" type="button" role="tab"
+        aria-controls="disc" aria-selected="false">
+        DISC
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="curriculum-tab" data-bs-toggle="tab" data-bs-target="#curriculum" type="button"
+        role="tab" aria-controls="curriculum" aria-selected="false">
+        Curriculum
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content p-3 border border-top-0 rounded-bottom" id="myTabContent">
+    <div class="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">
+      <app-dados-pessoais></app-dados-pessoais>
+    </div>
+    <div class="tab-pane fade" id="formacao" role="tabpanel" aria-labelledby="formacao-tab">
+      <app-formacao-academica></app-formacao-academica>
+    </div>
+    <div class="tab-pane fade" id="experiencia" role="tabpanel" aria-labelledby="experiencia-tab">
+      <app-experiencia-profissional></app-experiencia-profissional>
+    </div>
+    <div class="tab-pane fade" id="habilidades" role="tabpanel" aria-labelledby="habilidades-tab">
+      <app-habilidades></app-habilidades>
+    </div>
+    <div class="tab-pane fade" id="comportamentais" role="tabpanel" aria-labelledby="comportamentais-tab">
+      <app-info-comportamentais></app-info-comportamentais>
+    </div>
+    <div class="tab-pane fade" id="disc" role="tabpanel" aria-labelledby="disc-tab">
+      <app-disc></app-disc>
+    </div>
+    <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
+      <app-curriculum></app-curriculum>
+      <app-buttons></app-buttons>
+    </div>
+  </div>
+</div>

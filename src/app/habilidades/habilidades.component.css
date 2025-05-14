@@ -1,0 +1,13 @@
+input.is-valid,
+.form-check-input.is-valid {
+  border-color: #198754;
+}
+
+input.is-invalid,
+.form-check-input.is-invalid {
+  border-color: #dc3545;
+}
+
+.form-check-inline.is-invalid label {
+  color: #dc3545;
+}

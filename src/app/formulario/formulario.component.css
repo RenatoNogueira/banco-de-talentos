@@ -1,0 +1,108 @@
+/* Adicione isso ao seu arquivo de estilos global ou do componente */
+
+/* Estilo geral das tabs */
+.nav-tabs {
+  border-bottom: 2px solid #f0f2f5;
+  padding: 0 1rem;
+}
+
+.nav-tabs .nav-item {
+  margin-bottom: -2px;
+  position: relative;
+}
+
+/* Estilo dos links das tabs */
+.nav-tabs .nav-link {
+  color: #6c757d;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 1rem 1.5rem;
+  border: none;
+  background: transparent;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Efeito hover */
+.nav-tabs .nav-link:hover {
+  color: #4a4a4a;
+  background-color: rgba(74, 74, 74, 0.05);
+  border: none;
+}
+
+/* Tab ativa */
+.nav-tabs .nav-link.active {
+  color: #4361ee;
+  background-color: transparent;
+  border: none;
+}
+
+/* Indicador da tab ativa */
+.nav-tabs .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #4361ee, #3a0ca3);
+  border-radius: 3px 3px 0 0;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Efeito de transição para o indicador */
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* Conteúdo das tabs */
+.tab-content {
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 0 8px 8px 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-top: -1px;
+}
+
+/* Responsividade para mobile */
+@media (max-width: 768px) {
+  .nav-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 5px;
+  }
+
+  .nav-tabs .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
